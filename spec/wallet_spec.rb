@@ -3,7 +3,7 @@ require 'wallet_central'
 
 RSpec.describe WalletCentral do
 
-  describe ".new.load_clients" do
+  describe ".output" do
     before do
       @wallet_central = WalletCentral.output
     end
@@ -11,6 +11,5 @@ RSpec.describe WalletCentral do
     it "must return all clients" do
       expect(@wallet_central.count).to eql(11)
     end
-
   end
 end
