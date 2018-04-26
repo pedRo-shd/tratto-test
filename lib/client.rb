@@ -6,5 +6,12 @@ class Client < OpenStruct
     super(name: name, wallets: wallets)
   end
 
+  def build_output
+    { name: name, wallets: build_wallets }
+  end
+
+  def build_wallets
+    wallets.map { |wallet| [wallet.currency, wallet.amount] }.to_h
+  end
 
 end

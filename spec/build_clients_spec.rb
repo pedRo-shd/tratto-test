@@ -12,7 +12,7 @@ RSpec.describe BuildClients do
       expect(@build_clients.count).to eql(11)
     end
 
-    it "must return clients jon" do
+    it "must return first client" do
       expect(@build_clients[0][:name]).to eql('jon')
     end
 
