@@ -1,20 +1,24 @@
 # Tratto Programming Exercise
 
+Dependencies:
+* Ruby: 2.5.0
+
 Ruby plain code to load all the users and wallets, and be available to output the data in json:
+
 * Load the lib
-  ´´´
+  ```
   load './lib/wallet_central.rb'
-  ´´´
+  ```
 
-* Output
-  ´´´
+* All users and wallets
+  ```
   WalletCentral.output
-  ´´´
+  ```
 
-* To specific client
-  ´´´
+* To specific user
+  ```
   WalletCentral.output('jon')
-  ´´´
+  ```
 
 <!-- And be able to exchange/transfer the wallet amounts through accounts.
 For examples:
