@@ -32,7 +32,7 @@ class BuildClients
   end
 
   def create_customer(obj)
-    Wallet.new(obj.Currency, obj.Amount.to_f, obj.Client, @objects_array)
+    Wallet.new(obj.Currency, obj.Amount.to_f, obj.Client, @objects_array).build_client
   end
 
 end
