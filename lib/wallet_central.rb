@@ -1,11 +1,17 @@
 require_relative 'build_clients'
+require_relative 'transaction_operation'
 
 class WalletCentral
 
   def self.output(name=nil)
-    build_clients = BuildClients.new.load_clients
     return search_client(build_clients, name) if name
     clients_and_wallets(build_clients)
+  end
+
+  def self.transfer(from_client, to_client, currency, value)
+    origin_client = build_clients.find { |client| client.name == from_client }
+    destination_client = build_clients.find { |client| client.name == to_client }
+    TransactionOperation.new(origin_client, destination_client, currency, value).call
   end
 
   def self.search_client(data_clients, name)
@@ -21,4 +27,9 @@ class WalletCentral
       puts e
     end
   end
+
+  def self.build_clients
+    BuildClients.new.load_clients
+  end
+
 end
