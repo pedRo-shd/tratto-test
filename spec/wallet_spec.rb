@@ -16,13 +16,17 @@ RSpec.describe WalletCentral do
       end
     end
 
-    context "when search one client" do
+    context "when search client" do
       it "must return client jon" do
-        expect(@set_client).to eql('jon')
+        expect(@set_client_jon[:name]).to eql('jon')
       end
 
       it "must return client sansa" do
-        expect(@set_client_jon[0][:name]).to eql('sansa')
+        expect(@set_client_sansa[:name]).to eql('sansa')
+      end
+
+      it "mustn't return client that not exists" do
+        expect{ WalletCentral.output('elliot') }.to raise_error('elliot is not a client')
       end
     end
 

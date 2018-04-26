@@ -9,7 +9,9 @@ class WalletCentral
   end
 
   def self.search_client(data_clients, name)
-    clients_and_wallets(data_clients).find { |user| user[:name] == name.to_s }
+    client = clients_and_wallets(data_clients).find { |user| user[:name] == name.to_s }
+    raise Exception, "#{name} is not a client" unless client
+    client
   end
 
   def self.clients_and_wallets(data_clients)
