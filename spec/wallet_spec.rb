@@ -26,7 +26,7 @@ RSpec.describe WalletCentral do
       end
 
       it "mustn't return client that not exists" do
-        expect{ WalletCentral.output('elliot') }.to raise_error('elliot is not a client')
+        expect { WalletCentral.output('elliot') }.to raise_error('elliot is not a client')
       end
     end
 

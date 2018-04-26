@@ -15,6 +15,10 @@ class WalletCentral
   end
 
   def self.clients_and_wallets(data_clients)
-    data_clients.map(&:build_output)
+    begin
+      data_clients.map(&:build_output)
+    rescue => e
+      puts e
+    end
   end
 end
