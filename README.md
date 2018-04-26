@@ -1,21 +1,22 @@
 # Tratto Programming Exercise
 
-In the lib/resources directory, you'll find a csv data file:
+Ruby plain code to load all the users and wallets, and be available to output the data in json:
+* Load the lib
+  ´´´
+  load './lib/wallet_central.rb'
+  ´´´
 
-* wallets.csv; a list of users and their relative wallets and total amount.
+* Output
+  ´´´
+  WalletCentral.output
+  ´´´
 
-We want you to write a ruby plain code to load all the users and wallets, and be available to output the data in json:
-* JSON as an array of objects with:
+* To specific client
+  ´´´
+  WalletCentral.output('jon')
+  ´´´
 
-  {
-    name: "Jon",
-    wallets: {
-      "EUR": 868.65,
-      "USD": 463.69
-    }
-  }
-
-And be able to exchange/transfer the wallet amounts through accounts.
+<!-- And be able to exchange/transfer the wallet amounts through accounts.
 For examples:
   * Jon wants to transfer 100 euros to Littlefinger, but Littlefinger don't have an Euro wallet, so he'll convert the amount to dollars and transfer the relative value to Littlefinger Dollars wallet.
   * Jon wants to transfer 500 dollars to Arya, which have a Dollars wallet, so he'll transfer the normal value.
@@ -43,4 +44,4 @@ Feel free to define the conversions values as you want to, following as this:
 # Publishing
 
 Fork or clone this repository, add your modifications to your own repository and send the Github URL to us at thiago@kcapt.com.br
-Please, create and write your commits as in real life, since we're going to review this too.
+Please, create and write your commits as in real life, since we're going to review this too. -->

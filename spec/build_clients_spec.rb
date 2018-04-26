@@ -37,6 +37,7 @@ RSpec.describe BuildClients do
       expect(@build_clients[10][:wallets][0].currency).to eql('BRL')
       expect(@build_clients[10][:wallets][1].currency).to eql('USD')
     end
+
   end
 
 end
