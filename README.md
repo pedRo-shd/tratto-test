@@ -21,9 +21,9 @@ Ruby plain code to load all the users and wallets, and be available to output th
   ```
 
 * To transfer amount between users.
-* The converions is applied if destination client not have currency wallet.
-* Can not transfer value if origin client does not have wallet
-* Can not transfer value if origin client does not have sufficient balance
   ```
   WalletCentral.transfer('jon', 'littlefinger', 'EUR', 100)
   ```
+* The converions is applied if destination client not have currency wallet.
+* Can not transfer value if origin client does not have wallet
+* Can not transfer value if origin client does not have sufficient balance
