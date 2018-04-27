@@ -32,17 +32,14 @@ RSpec.describe WalletCentral do
   end
 
   describe ".transfer" do
-    before do
-      @transfer1 = WalletCentral.transfer('jon', 'tyrion', 'USD', 100)
-    end
-
     context "when are same currency" do
-      it "must add to client amount" do
-        expect(@set_client_jon).to eql({:name=>"tyrion", :wallets=>{"EUR"=>868.65, "USD"=>1068.12}})
+      before do
+        @transfer1 = WalletCentral.transfer('jon', 'tyrion', 'USD', 100)
       end
-
-      # it "must substract to client amount" do
-      # end
+      
+      it "must return message success with data from transfer" do
+        expect(@transfer1[0]).to match(/Transfer 100.0 to tyrion was successfull.*/)
+      end
     end
   end
 
