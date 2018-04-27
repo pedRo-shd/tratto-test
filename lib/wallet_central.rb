@@ -9,8 +9,9 @@ class WalletCentral
   end
 
   def self.transfer(from_client, to_client, currency, value)
-    origin_client = build_clients.find { |client| client.name == from_client }
-    destination_client = build_clients.find { |client| client.name == to_client }
+    load_clients = build_clients
+    origin_client = find_client_for_object(load_clients, from_client)
+    destination_client = find_client_for_object(load_clients, to_client)
     TransactionOperation.new(origin_client, destination_client, currency, value).call
   end
 
@@ -30,6 +31,10 @@ class WalletCentral
 
   def self.build_clients
     BuildClients.new.load_clients
+  end
+
+  def self.find_client_for_object(objects_clients, client_name)
+    objects_clients.find { |client| client.name == client_name }
   end
 
 end
