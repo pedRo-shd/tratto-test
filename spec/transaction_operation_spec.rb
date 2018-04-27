@@ -12,6 +12,8 @@ RSpec.describe TransactionOperation do
       @destination_client2  = WalletCentral.find_client_for_object(build_clients, 'aray')
       @transaction          = TransactionOperation.new(@origin_client, @destination_client, 'EUR', 100)
       @transaction2         = TransactionOperation.new(@origin_client, @destination_client2, 'USD', 500)
+      @transaction3         = TransactionOperation.new(@origin_client, @destination_client2, 'BRL', 500)
+      @transaction4         = TransactionOperation.new(@origin_client, @destination_client2, 'USD', 5000)
     end
 
     context "when destination client not have EURO wallet from transfer but have USD" do
@@ -25,6 +27,18 @@ RSpec.describe TransactionOperation do
       it "muts convert value EURO to USD" do
         @transaction2.find_wallets(@destination_client2)
         expect(@transaction2.value).to eql(500)
+      end
+    end
+
+    context "when origin client not have the currency wallet" do
+      it "mustn't trasnfer and return message" do
+        expect { @transaction3.find_wallets(@origin_client) }.to raise_error("You don't have the BRL wallet you tried to transfer")
+      end
+    end
+
+    context "when origin client not have the sufficient amount to transfer" do
+      it "mustn't trasnfer and return message" do
+        expect { @transaction4.find_wallets(@origin_client) }.to raise_error("Insufficient ballance to transfer")
       end
     end
   end
