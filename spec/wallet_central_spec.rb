@@ -38,7 +38,7 @@ RSpec.describe WalletCentral do
 
     context "when are same currency" do
       it "must return message success with data from transfer" do
-        expect(@transfer1[0]).to match(/Transfer 100 to tyrion was successfull.*/)
+        expect(@transfer1[0]).to match(/Transfer 100 USD to tyrion was successfull.*/)
       end
     end
   end
