@@ -18,8 +18,9 @@ class Wallet < OpenStruct
     self.amount -= value
   end
 
-  def add(value)
+  def add(origin_client, destination_client, value)
     self.amount += value
+    success_message(origin_client, destination_client, value)
   end
 
   private
@@ -28,4 +29,14 @@ class Wallet < OpenStruct
     clients.wallets << self
     return
   end
+
+  def success_message(origin_client, destination_client, value)
+    notice = []
+    notice << "Transfer #{value.to_f} to #{destination_client.name} was successfull"
+    notice << "Balance from #{origin_client.name} client:"
+    notice << origin_client.build_output[:wallets].map {|w| w}
+    notice << "Balance from #{destination_client.name} client:"
+    notice << origin_client.build_output[:wallets].map {|w| w}
+  end
+
 end

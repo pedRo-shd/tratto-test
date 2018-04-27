@@ -12,22 +12,18 @@ class TransactionOperation
     adds_value
   end
 
-  private
+  def find_wallets(client_origin_or_destination)
+    client_origin_or_destination.wallets.find { |w| w.currency == @currency.to_s }
+  end
 
-  # def verified_currency
-  #   substract
-  #   add
-  # end
+  private
 
   def substracts_value
     find_wallets(@from_client).substract(@value)
   end
 
   def adds_value
-    find_wallets(@to_client).add(@value)
+    find_wallets(@to_client).add(@from_client, @to_client, @value)
   end
 
-  def find_wallets(client)
-    client.wallets.find { |w| w.currency == @currency.to_s }
-  end
 end
