@@ -32,13 +32,13 @@ RSpec.describe WalletCentral do
   end
 
   describe ".transfer" do
+    before do
+      @transfer1 = WalletCentral.transfer('jon', 'tyrion', 'USD', 100)
+    end
+
     context "when are same currency" do
-      before do
-        @transfer1 = WalletCentral.transfer('jon', 'tyrion', 'USD', 100)
-      end
-      
       it "must return message success with data from transfer" do
-        expect(@transfer1[0]).to match(/Transfer 100.0 to tyrion was successfull.*/)
+        expect(@transfer1[0]).to match(/Transfer 100 to tyrion was successfull.*/)
       end
     end
   end

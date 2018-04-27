@@ -1,7 +1,6 @@
 class ConvertCurrency
   # USD to BRL = 1 USD is 3.16 BRL
   # USD to EUR = 1 USD is 0.80 EUR
-
   attr_accessor :from_currency, :to_currency, :value
 
   def initialize(from_currency, to_currency, value)
@@ -11,9 +10,9 @@ class ConvertCurrency
   end
 
   def convert
-    from_eur if @from_currency == 'EUR'
-    from_usd if @from_currency == 'USD'
-    from_brl if @from_currency == 'BRL'
+    return from_eur if @from_currency == 'EUR'
+    return from_usd if @from_currency == 'USD'
+    return from_brl if @from_currency == 'BRL'
   end
 
   private
